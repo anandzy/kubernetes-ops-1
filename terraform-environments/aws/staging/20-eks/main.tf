@@ -63,14 +63,7 @@ module "eks" {
 
   cluster_version = "1.20"
 
-  # public cluster - kubernetes API is publicly accessible
-  cluster_endpoint_public_access = true
-  cluster_endpoint_public_access_cidrs = [
-    "0.0.0.0/0",
-    "1.1.1.1/32",
-  ]
-
-  # private cluster - kubernetes API is internal the the VPC
+    # private cluster - kubernetes API is internal the the VPC
   cluster_endpoint_private_access                = true
   cluster_create_endpoint_private_access_sg_rule = true
   cluster_endpoint_private_access_cidrs = [
@@ -79,6 +72,15 @@ module "eks" {
     "192.168.0.0/16",
     "100.64.0.0/16",
   ]
+
+  # public cluster - kubernetes API is publicly accessible
+  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access_cidrs = [
+    "0.0.0.0/0",
+    "1.1.1.1/32",
+  ]
+
+
 
   # Add whatever roles and users you want to access your cluster
   map_roles = [
